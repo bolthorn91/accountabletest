@@ -1,0 +1,357 @@
+{
+  "info": {
+    "_postman_id": "your-postman-id",
+    "name": "Library API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/books?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Books",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/books/search?title=Harry&author=Rowling&year=1997&page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "search"],
+              "query": [
+                {
+                  "key": "title",
+                  "value": "Harry",
+                  "description": "Search by title (optional)"
+                },
+                {
+                  "key": "author",
+                  "value": "Rowling",
+                  "description": "Search by author (optional)"
+                },
+                {
+                  "key": "year",
+                  "value": "1997",
+                  "description": "Search by publication year (optional)"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Search books by title, author, and/or publication year. All search parameters are optional."
+          }
+        },
+        {
+          "name": "Get Book by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isbn\": \"9780747532743\",\n  \"title\": \"Harry Potter and the Philosopher's Stone\",\n  \"author\": \"J.K. Rowling\",\n  \"publicationYear\": 1997,\n  \"publisher\": \"Bloomsbury\",\n  \"retailPrice\": 15.99,\n  \"totalCopies\": 5,\n  \"availableCopies\": 5\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Book",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"retailPrice\": 19.99,\n  \"totalCopies\": 10,\n  \"availableCopies\": 8\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Book",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/users?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{userId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"walletBalance\": 50\n}"
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{userId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "{{userId}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Smith\",\n  \"walletBalance\": 75\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{userId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Add to Wallet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{userId}}/wallet/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "{{userId}}", "wallet", "add"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 25\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservations",
+      "item": [
+        {
+          "name": "Create Reservation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/reservations",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reservations"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"bookId\": \"{{bookId}}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Reservation by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/reservations/{{reservationId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reservations", "{{reservationId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get User Reservations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/reservations/user/{{userId}}?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reservations", "user", "{{userId}}"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Return Book",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/reservations/{{reservationId}}/return",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reservations", "{{reservationId}}", "return"]
+            }
+          }
+        },
+        {
+          "name": "Process Reminders",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/reservations/process-reminders",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reservations", "process-reminders"]
+            },
+            "description": "Trigger the processing of due date and late reminders"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "userId",
+      "value": "your-user-id-here"
+    },
+    {
+      "key": "bookId",
+      "value": "your-book-id-here"
+    },
+    {
+      "key": "reservationId",
+      "value": "your-reservation-id-here"
+    }
+  ]
+} 
